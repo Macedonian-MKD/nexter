@@ -1,0 +1,139 @@
+@use "../base" as *;
+@use "../components" as *;
+
+.sidebar{
+    background-color: $color-primary;
+    grid-column: sidebar-start/sidebar-end;
+    grid-row: 1/-1;
+    display: flex;
+    justify-content: center;
+    @media only screen and (max-width:$bp-large){
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.nav-btn{
+    border:0;
+    border-radius: 0;
+    background-color: white;
+    height: 2px;
+    width: 4.5rem;
+    margin-top: 5rem;
+    &::before,&::after{
+        content:"";
+        display: block;
+        height: 2px;
+        background-color: white;
+        width: 4.5rem;
+    }
+    &::before{
+        transform:translateY(-1.5rem);
+    }
+    &::after{
+        transform:translateY(1.3rem);
+    }
+    @media only screen and (max-width:$bp-large){
+        margin-top:0;
+        margin-right: 3rem;
+        &::before{
+            transform:translateY(-1.2rem);
+        }
+        &::after{
+            transform:translateY(1rem);
+        }
+    }
+}
+.nav-btn-close{
+    background-color: transparent;
+    border:none;
+    width: 4.5rem;
+    border-radius: 0;
+    cursor:pointer;
+    display: none;
+    z-index: 2999;
+    position: relative;
+    font-size: 4rem;
+    height: 4.5rem;
+    margin-top: 3.5rem;
+    transition:all 200ms;
+    &:hover{
+        color:$color-primary;
+    }
+    @media only screen and (max-width:$bp-large){
+        margin-right: 3rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.main-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top:0; left:0;
+    transform:translateX(5000px);
+    transition: all 0.5s ease-in;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.872);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /*display: none; Ne moze animacii ( tranzicii so display :none) */
+    
+    /* Correct way to hide
+    and element without display:none */
+
+    /* 1) Hide it visualy */
+    opacity:0;
+
+    /* 2) Make it unaccesible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3)Hide from screenreaders */
+    visibility: hidden;
+}
+
+.main-nav__list{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 4.8rem;
+    font-size: 8rem;
+}
+
+.nav-open .main-nav{
+    opacity: 100%;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.nav-open .nav-btn{
+    display: none;
+}
+
+.nav-open .nav-btn-close{
+    display: block;
+}
+
+.main-nav__list{
+    list-style: none;
+}
+
+.main-nav__link:link, .main-nav__link:visited{
+    display: inline-block;
+    font-size: 2.8rem;
+    text-decoration: none;
+    color:#333;
+    font-weight: bold;
+    transition: all 300ms;
+}
+
+.main-nav__link:hover, .main-nav__link:active{
+    color:$color-primary;
+}

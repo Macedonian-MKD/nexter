@@ -1,0 +1,32 @@
+@use "../base" as *;
+
+.features{
+    grid-column: center-start / center-end;
+    padding:15rem 0;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));// namesto da koristime media queries, so auto fit moze toa da go napravime. Sekoja kolona ne treba da bide pod 250px
+    gap:6rem;
+    align-items: start;
+
+    .feature{
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        gap:1.5rem;
+        &__icon{
+            fill:$color-primary;
+            width: 4.5rem;
+            height: 4.5rem;
+            grid-row: span 2;
+            transform:translateY(-1rem);
+        }
+        
+        &__text{
+            font-size: 1.7rem;
+            grid-column: 2 / -1;
+            grid-row: 2 / 3;
+        }
+    }
+
+   
+}

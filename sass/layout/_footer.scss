@@ -1,0 +1,42 @@
+@use "../base" as *;
+@use "../components" as *;
+
+.footer{
+    background-color: $color-secondary;
+    grid-column: full-start / full-end;
+    padding:8rem;
+}
+
+.nav{
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,1fr));
+    align-items: center;
+    gap:2rem;
+   
+    &__link:link, &__link:visited{
+        text-transform: uppercase;
+        text-align: center;
+        color:#fff;
+        font-size: 1.4rem;
+        font-family: $font-display;
+        text-decoration: none;
+        line-break: normal;
+        display: block;
+        padding:1.5rem;
+        transition:all 200ms;
+    }
+
+    &__link:hover, &__link:active{
+        background-color: rgba(#fff,.05);
+        transform:translateY(-3px);
+    }
+}
+
+.copyright{
+    font-size: 1.4rem;
+    color:$color-grey-light-2;
+    margin-top: 6rem;
+    text-align: center;
+}
